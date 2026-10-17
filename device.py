@@ -60,7 +60,6 @@ class Device():
     def max_borrow_days(self) -> int:
         return self._max_borrow_days
 
-    @property
     def mark_as_borrowed(self):
         self._status = DeviceStatus.Borrowed
 
@@ -68,7 +67,7 @@ class Device():
         self._status = DeviceStatus.Avaiable
 
     def __str__(self) -> str:
-        return f"Device [{self._device_id}] - {self._name} | Trạng thái: {self._status.value} | Giá: {self._purchase_price}"
+        return f"Device [{self._device_id}] - {self.device_name} | Trạng thái: {self._status.value} | Giá: {self._purchase_price}"
 
 class AirConditionRemote (Device):
     def __init__ (

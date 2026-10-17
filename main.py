@@ -8,7 +8,7 @@ def run_tests():
     try:
         # 1. Tạo một giảng viên
         lecturer = Lecturer("GV01", "Nguyễn Văn A")
-        print(f"-> Tạo giảng viên: {lecturer.full_name} (Tối đa {lecturer.get_maximum_devices()} thiết bị)")
+        print(f"-> Tạo giảng viên: {lecturer.borrower_name} (Tối đa {lecturer.get_maximum_devices()} thiết bị)")
 
         # 2. Tạo thiết bị
         projector_remote = ProjectorRemote("PR01", "Điều khiển máy chiếu", 2023, 500000)
