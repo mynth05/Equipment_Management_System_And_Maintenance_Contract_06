@@ -62,10 +62,10 @@ class Device():
 
     @property
     def mark_as_borrowed(self):
-        self._status = DeviceStatus.BORROWED
+        self._status = DeviceStatus.Borrowed
 
     def mark_as_available(self):
-        self._status = DeviceStatus.AVAILABLE
+        self._status = DeviceStatus.Avaiable
 
     def __str__(self) -> str:
         return f"Device [{self._device_id}] - {self._name} | Trạng thái: {self._status.value} | Giá: {self._purchase_price}"
@@ -90,7 +90,7 @@ class Micro (Device):
     ):
         super().__init__(device_id, device_name, year_of_use, purchase_price,max_borrow_days=1)
 
-class Remote (Device):
+class ProjectorRemote (Device):
     def __init__ (
         self,
         device_id,
