@@ -1,6 +1,5 @@
 from typing import List, Optional
 from device import Device
-from device import DeviceStatus
 
 class ClassRoom:
     def __init__(self, room_id: str, room_name: str, capacity: int):

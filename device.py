@@ -1,7 +1,5 @@
-from typing import List, Optional
 from enum import Enum
 from datetime import datetime
-from abc import ABC, abstractmethod
 
 class DeviceStatus(Enum):
     Avaiable = "Avaiable"   # thiết bị có sẵn
@@ -17,7 +15,8 @@ class Device():
         device_name: str,   # tên thiết bị
         year_of_use: int,   # năm đưa vào sử dụng
         purchase_price: float,   # giá mua
-        max_borrow_days: int,   # số ngày tối đa cho mượn
+        max_borrow_days: int = 7,   # số ngày tối đa cho mượn
+        status: DeviceStatus = DeviceStatus.Avaiable
     ):
         if not device_id or not device_id.strip():
            raise ValueError (" Mã thiết bị không được để trống.")
@@ -31,7 +30,7 @@ class Device():
         self._year_of_use = year_of_use
         self._purchase_price = purchase_price
         self._max_borrow_days = max_borrow_days
-        self._status = DeviceStatus.Avaiable
+        self._status = status
 
     @property
     def device_id(self) -> str:
@@ -49,9 +48,13 @@ class Device():
     def purcharse_price(self) -> float:
         return self._purchase_price
 
+    @property
+    def status(self) -> DeviceStatus:
+        return self._status
+    
     @status.setter
-    def status(self, value = DeviceStatus):
-        return self._status = value
+    def status(self, value: DeviceStatus):
+        self._status = value
 
     @property
     def max_borrow_days(self) -> int:
@@ -73,9 +76,28 @@ class AirConditionRemote (Device):
         device_id,
         device_name,
         year_of_use,
-        purchase_price,
-        status: DeviceStatus.Avaiable
+        purchase_price
     ):
-        super().__init__(device_id, device_name, year_of_use, purchase_price,status)
+        super().__init__(device_id, device_name, year_of_use, purchase_price,max_borrow_days=5)
+
+class Micro (Device):
+    def __init__ (
+        self,
+        device_id,
+        device_name,
+        year_of_use,
+        purchase_price
+    ):
+        super().__init__(device_id, device_name, year_of_use, purchase_price,max_borrow_days=1)
+
+class Remote (Device):
+    def __init__ (
+        self,
+        device_id,
+        device_name,
+        year_of_use,
+        purchase_price
+    ):
+        super().__init__(device_id, device_name, year_of_use, purchase_price,max_borrow_days=5)
 
     
